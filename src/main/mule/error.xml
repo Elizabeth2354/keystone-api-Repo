@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<error-handler name="errorError_Handler" doc:id="7aeb0d71-981d-48ce-b812-bf1f0d461f3d" >
+		<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="91acd38d-afac-4f78-b48c-fa1debf52289" type="ANY">
+			<flow-ref doc:name="Flow Reference" doc:id="b7d85c87-3698-4261-803f-a1518baa6710" name="errorSub_Flow"/>
+		</on-error-continue>
+		<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="3afaf73b-f17d-40a9-bfb4-6064c4f4da0c" type="ANY">
+			<flow-ref doc:name="Flow Reference" doc:id="09699e96-3b66-423e-a342-5732ed4a259a" name="errorSub_Flow"/>
+		</on-error-continue>
+	</error-handler>
+	<sub-flow name="errorSub_Flow" doc:id="9840c163-aac8-4a21-8801-d0359d1de2ab" >
+		<logger level="INFO" doc:name="Logger" doc:id="5cab49c9-df97-4ca5-961e-539eb010aca9" />
+		<ee:transform doc:name="Transform Message" doc:id="6861acce-bdb5-4f0d-86f3-97461898e34b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"code": error.errorType.identifier default "UNKNOWNERROR",
+	"type": "ERROR",
+	"message": error.errorMessage,
+	"details": error.detailedDescription,
+	"timeStamp": now(),
+	"correlationId": correlationId
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="e4456b35-107f-4a70-bdbb-99cc1f284e52" />
+	</sub-flow>
+</mule>

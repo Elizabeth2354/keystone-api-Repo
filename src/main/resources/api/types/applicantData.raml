@@ -1,0 +1,247 @@
+#%RAML 1.0 DataType
+properties:
+  indSsn:
+    type: string
+    required: true
+    maxLength: 7
+  indivName: 
+    type: !include indivName.raml
+    required: true
+  oldname:
+    type:  !include indivName.raml
+    required: false
+  indAddr:
+    type: !include indAddr.raml
+    required: true
+  indEmail:
+    type: string
+    required: false
+  indPhoneNr:
+    type: !include indPhoneNr.raml
+    required: false
+  citizenshipStat:
+    type: string
+    required: true
+  citizenship:
+    type: string
+    required: true
+  birthCtryCd:
+    type: string
+    required: true
+  indSexCd:
+    type: !include genderType.raml
+    required: true
+  indRacePopCd:
+    type: string
+    required: true
+  indEthnicCd:
+    type: string
+    required: true
+  indOpLic:
+    type: string
+    required: false 
+  indOpLicExpDt:
+    type: date-only
+    required: false 
+  birthDt:
+    type: date-only
+    required: true
+  nbrAdultDep:
+    type: number
+    required: true
+  nbrChildDep:
+    type: number
+    required: true
+  rctgProgCd:
+    type: array 
+    required: false
+  svc:
+    type: string
+    required: true
+  statOblig:
+    type: !include yesnotype.raml
+    required: false
+  enlistCatCd:
+    type: string 
+    required: true
+  heldSkills:
+    type: !include mosType.raml
+    required: false
+  starrPartCd:
+    type: !include yesnotype.raml
+    required: false
+  mpc:
+    type: string
+    required: true
+  payLevel:
+    type: string
+    required: true
+  enlType:
+    type: string
+    required: true
+  BasActSvcDt:
+    type: date-only
+    required: false
+  recruiterSSN:
+    type: !include ssnType.raml
+  rsid:
+    type: string
+    required: false
+  consObj:
+    type: string
+    required: false
+  vol:
+    type: string
+    required: false
+  secClr:
+    type: string
+    required: false
+  inducteeCd:
+    type: string
+    required: false
+  mepsId:
+    type: string
+    required: false
+  advRankRsn:
+    type: string
+    required: false
+  prspctRecInd:
+    type: string
+    required: false
+  officeCd:
+    type: string
+    required: true
+  missionBoxCat:
+    type: string
+    required: false
+  ttasScore:
+    type: integer
+    required: false
+  ttasPassInd:
+    type: !include yesnotype.raml
+    required: false
+  blueToGreenPart:
+    type: !include yesnotype.raml
+    required: false
+  enlistConfirm:
+    type: !include yesnotype.raml
+    required: false
+  enlistConfirmReasons:
+    type: array
+    required: false
+  shipConfirm:
+    type: !include yesnotype.raml
+    required: false
+  shipConfirmReasons:
+    type: !include shipConfirmReasons.raml
+    required: false
+  mepsCat:
+    type: string
+    required: false
+  cp:  
+    type: string
+    required: true
+  height:  
+    type: number
+    required: true
+  weight:  
+    type: number
+    required: true
+  physicalExam:
+    type: !include physicalExamType.raml
+    required: false
+  bmi:
+    type: number
+    required: false
+  educYrs:
+    type: integer
+    required: true
+  educCd:
+    type: string
+    required: true
+  asvabResults:
+    type: !include asvabResults.raml
+    required: false
+  mathAccredCd:
+    type: !include mathAccredCd.raml
+    required: false
+  sciAccredCd:
+    type: !include sciAccredCd.raml
+    required: false
+  apftDt:
+    type: date-only
+    required: false
+  apftPassInd:
+    type: !include passFailType.raml
+    required: false
+  typingCertInd:
+    type: !include yesnotype.raml
+    required: false
+  typingWPM:
+    type: integer
+    required: false
+  bandScore:
+    type: number
+    required: false
+  bandDate:
+    type: datetime
+    required: false
+  voiceScore:
+    type: !include passFailType.raml
+    required: false
+  voiceDate:
+    type: datetime
+    required: false
+  addtCollegeCredit:
+    type: integer
+    required: false
+  testResults:
+    type: array
+    items: !include examDateType.raml
+    required: false
+  dlptTests:
+    type: array
+    required: false
+  priorService:
+    type: array
+    required: false
+  gcSSN:
+    type: !include ssnType.raml
+    required: false
+    
+  basicTrCmpt:
+    type: !include yesnotype.raml
+    required: false
+
+  
+
+
+
+  
+  
+  
+  
+
+
+  
+  
+  
+
+
+  
+  
+  
+
+  
+
+   
+  
+
+
+
+
+  
+  
+  
+  
+    

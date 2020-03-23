@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+  rsvTransStatCd: 
+    type: string
+    required: true
+  rsvTransId: 
+    type: integer
+    required: true
+  cancelCd: 
+    type: string
+    required: false
+  cancelDt: 
+    type: date-only
+    required: true
+  cancelUserId: 
+    type: string
+    required: true
+  renoRsnCd: 
+    type: string
+    required: false

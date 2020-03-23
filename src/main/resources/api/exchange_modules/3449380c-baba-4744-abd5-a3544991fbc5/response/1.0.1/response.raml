@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+type: object
+displayName: Response schema
+description: The fragment is used in all AIE Interfaces that needs a generic response
+properties:
+    Code:
+      type: string
+      required: true
+      maxLength: 5
+      description: Response code
+    Message:
+      type: string
+      required: true
+      maxLength: 100
+      description: Response message
+
+example: !include response_example.raml

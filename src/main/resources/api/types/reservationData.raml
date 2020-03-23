@@ -1,0 +1,306 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+  rsvTransStatCd:  
+    type: string
+    required: true
+  rsvTransId:  
+    type: number
+    required: true
+  newssn:  
+    type: string
+    required: false
+  rctgProgCd:  
+    type: array
+    items:
+      type: string
+    minItems: 0
+    maxItems: 50
+    required: false
+  enlType:  
+    type: integer
+    required: true
+  dbTypCd:  
+    type: string
+    required: false
+  enlistVerDt:  
+    type: date-only
+    required: false
+  shipVerDt:  
+    type: date-only
+    required: false
+  renoRsnCd:  
+    type: string
+    required: false
+  renoQty:  
+    type: integer
+    required: true
+  renoDt:  
+    type: date-only
+    required: false
+  splitTrainingCd:  
+    type: string
+    required: false
+  split1Stat:  
+    type: string
+    required: false
+  paraNbr:  
+    type: string
+    required: false
+  lineNbr:  
+    type: string
+    required: false
+  enlPpn:  
+    type: number
+    required: false
+  termOfEnlMonths:  
+    type: integer
+    required: true
+  termOfEnlWeeks:  
+    type: number
+    required: false
+  reservDt:  
+    type: date-only
+    required: true
+  enlistDt:  
+    type: date-only
+    required: false
+  shipDt:  
+    type: date-only
+    required: false
+  cmdCd:  
+    type: string
+    required: false
+  tngsearchStartDt:  
+    type: date-only
+    required: false
+  tngsearchEndDt:  
+    type: date-only
+    required: false
+  uic:  
+    type: string
+    required: false
+  unitPosId:  
+    type: string
+    required: false
+  jobOpeningId:  
+    type: string
+    required: false
+  firStaCd:  
+    type: string
+    required: false
+  uvCtlNbr:  
+    type: integer
+    required: false
+  uVArrivDt:  
+    type: date-only
+    required: false
+  vacMpc:  
+    type: string
+    required: false
+  vacPayLvl:  
+    type: string
+    required: false
+  projEtsDt:  
+    type: date-only
+    required: false
+  dMosQualCd:  
+    type: string
+    required: false
+  paysJobCd:  
+    type: array
+    items:
+      type: string
+    minItems: 0
+    maxItems: 50
+    required: false
+  usarNgUnitNm:  
+    type: string
+    required: false
+  choiceZip:  
+    type: string
+    required: false
+  sp1ReservShipDt:  
+    type: date-only
+    required: false
+  sp1ReservShipVerDt:  
+    type: date-only
+    required: false
+  shipArrivalDt:  
+    type: date-only
+    required: false
+  depUnconfirmDt:  
+    type: date-only
+    required: false
+  enlistUnconfirmDt:  
+    type: date-only
+    required: false
+  shipUnconfirmDt:  
+    type: date-only
+    required: false
+  enlMos9:  
+    type: string
+    required: false
+  depOvrRide:  
+    type: string
+    required: false
+  ovrRide1Factor:  
+    type: string
+    required: false
+  ovrRide2Factor:  
+    type: string
+    required: false
+  ovrRide3Factor:  
+    type: string
+    required: false
+  ovrRide4Factor:  
+    type: string
+    required: false
+  ovrRide5Factor:  
+    type: string
+    required: false
+  ovrRide6Factor:  
+    type: string
+    required: false
+  ovrRideResrvRemrks:  
+    type: string
+    required: false
+  accessOvrRideInd:  
+    type: string
+    required: false
+  termsOfSrvReq:  
+    type: string
+    required: false
+  incentQualOvrRide:  
+    type: string
+    required: false
+  aitRemarks:  
+    type: string
+    required: false
+  basicTrDesired:  
+    type: string
+    required: false
+  basicTrCrs:  
+    type: string
+    required: false
+  batVol:  
+    type: string
+    required: false
+  eslWeeks:  
+    type: integer
+    required: true
+  mandatoryRetDt:  
+    type: date-only
+    required: false
+  outMonth:  
+    type: date-only
+    required: false
+  enlistTrainProgCd:  
+    type: string
+    required: false
+  priOptionCd:  
+    type: number
+    required: false
+  actFirstTermMnths:  
+    type: integer
+    required: true
+  actFirstTermWeeks:  
+    type: integer
+    required: true
+  totRCBonusAmt:  
+    type: number
+    required: false
+  milperMsgNmr:  
+    type: number
+    required: false
+  milperMsgDt:  
+    type: date-only
+    required: false
+  bonusTotAmt:  
+    type: number
+    required: false
+  userId:  
+    type: string
+    required: true
+  createId:  
+    type: string
+    required: true
+  createSrcCd:  
+    type: string
+    required: true
+  lastUpdateDt:  
+    type: date-only
+    required: true
+  lastUpdateId:  
+    type: string
+    required: true
+  lastUpdateSrcCd:  
+    type: string
+    required: true
+  gcSSN:  
+    type: string
+    required: false
+  transactDtTm:  
+    type: datetime
+    required: true
+  reinstRsvInd:  
+    type: string
+    required: false
+  enlTrainCatCd:  
+    type: string
+    required: false
+  resrvTypCd:  
+    type: string
+    required: false
+  reAssignTypCd:  
+    type: string
+    required: false
+  acaspParticpTypCd:  
+    type: string
+    required: true
+  tempResDt:  
+    type: date-only
+    required: false
+  permResDt:  
+    type: date-only
+    required: true
+  isQualified:  
+    type: string
+    required: false
+  reservQuals:  
+    type: string
+    required: false
+  recStaLoc:
+    type: !include uicLocType.raml
+    required: false
+  uvMos:
+    type: !include jobType.raml
+    required: false
+    
+  unitAddr:
+    type: !include addressType.raml
+    required: false
+  unitPhone:
+    type: !include phoneType.raml
+    required: false
+    
+  trainMos4:
+    type: !include mosEnlistSkillType.raml
+    required: false
+  preReqMos:
+    type: !include mosEnlistSkillType.raml
+    required: false
+  training:
+    type: array
+    required: false
+    minItems: 0
+    maxItems: 50
+    items:
+      type: !include courseLocType.raml
+  incentives:
+    type: array
+    required: false
+    minItems: 0
+    maxItems: 50
+    items:
+      type: !include incentType.raml

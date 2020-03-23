@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+type: object
+examples:
+  output: !include ../examples/physicalExamExample.raml
+         
+properties:
+  examCd:
+    type: string
+    required: false
+  examDt:
+    type: date-only
+    required: false

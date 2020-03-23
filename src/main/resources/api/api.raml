@@ -1,0 +1,27 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/24366ec7-72ba-4f8d-9664-f8e4fe7961c3/ # 
+title: sys-keystone-setReservation-api
+mediaType: [ application/json ]
+version: v1
+description: TBD
+
+uses:
+  message: library.raml
+        
+/setReseravation:
+  description: TBD
+  is: [message.client-id-enforcement] 
+  post:
+    body: message.setReservationRequest
+    responses:
+      201:
+        description: Successful
+        body: 
+          application/json:
+            type: object
+            properties:
+              setDataResponse :
+                type:  string
+      500:
+        description: Internal Error
+        body: message.exception

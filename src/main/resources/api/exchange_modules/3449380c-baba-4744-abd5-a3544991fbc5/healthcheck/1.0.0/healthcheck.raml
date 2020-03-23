@@ -1,0 +1,9 @@
+#%RAML 1.0 ResourceType
+get:
+  description: Health check fragment allows any operation to have the healthcheck get request method.  If called, the API implementation should determine if the operation is running normally.  If the operation is healthy, the implemenation sends back status code '200' and message as 'Application Online'
+  responses:
+        200:
+          description:  Health check response
+          body:
+            application/json:  !include healthcheck_schema.raml
+        

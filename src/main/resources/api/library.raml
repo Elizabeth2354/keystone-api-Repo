@@ -1,0 +1,13 @@
+#%RAML 1.0 Library
+traits:
+  client-id-enforcement: !include exchange_modules/3449380c-baba-4744-abd5-a3544991fbc5/client-id-enforcement-trait/1.0.0/client-id-enforcement-trait.raml
+types:
+  response: !include exchange_modules/3449380c-baba-4744-abd5-a3544991fbc5/response/1.0.1/response.raml
+  
+  getReservationRequest: !include types/personRecord.raml
+  setReservationRequest: !include types/setReservation.raml
+  getReservationResponse: !include types/getReservationResp.raml
+  exception: !include exchange_modules/3449380c-baba-4744-abd5-a3544991fbc5/exception/1.0.3/exception_schema.raml
+
+resourceTypes:
+  healthcheck: !include exchange_modules/3449380c-baba-4744-abd5-a3544991fbc5/healthcheck/1.0.0/healthcheck.raml

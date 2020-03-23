@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+description: mathAccredCd 
+type: object
+examples:
+  output: !include ../examples/mathAccredCdExample.raml
+properties:
+    mathAccredCd:
+      type: array
+      items:
+        type: string
+      minItems: 0
+      maxItems: 50
+      required: true

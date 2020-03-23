@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:wsc="http://www.mulesoft.org/schema/mule/wsc" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/wsc http://www.mulesoft.org/schema/mule/wsc/current/mule-wsc.xsd">
+	<flow name="setReservationFlow" doc:id="04eabc5e-35fa-4af2-be29-b451728a7e5b" >
+		<logger level="INFO" doc:name="Logger Entry" doc:id="f2bf99d0-c331-4ffe-9888-4c6eb3ca1eb5" />
+		<ee:transform doc:name="Transform JSON to XML SOAP Request" doc:id="86005bcd-6206-4fca-a275-35710f832221" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/xml
+ns req http://www.mepcom.army.mil/request
+ns dat http://www.mepcom.army.mil/dataTypes
+var ref = payload.body.req#setReservationData
+---
+
+{
+  "setReservationData": {
+    "personRecord": {
+      "ssn": ref.req#personRecord.req#ssn,
+      "pr_id": ref.req#personRecord.req#pr_id,
+      "compCd": ref.req#personRecord.req#compCd,
+      "processDescription": ref.req#personRecord.req#processDescription
+    },
+    "cancelData": {
+      "rsvTransStatCd": ref.req#cancelData.req#rsvTransStatCd,
+      "rsvTransId": ref.req#cancelData.req#rsvTransId,
+      "cancelCd": ref.req#cancelData.req#cancelCd,
+      "cancelDt": ref.req#cancelData.req#cancelDt,
+      "cancelUserId": ref.req#cancelData.req#cancelUserId,
+      "renoRsnCd": ref.req#cancelData.req#renoRsnCd
+    },
+    "reservationData": {
+      "rsvTransStatCd": ref.req#reservationData.req#rsvTransStatCd,
+      "rsvTransId": ref.req#reservationData.req#rsvTransId,
+      "newssn": ref.req#reservationData.req#newssn,
+      "rctgProgCd": ref.req#reservationData.req#rctgProgCd,
+      "enlType": ref.req#reservationData.req#enlType,
+      "dbTypCd": ref.req#reservationData.req#dbTypCd,
+      "enlistVerDt": ref.req#reservationData.req#enlType,
+      "shipVerDt": ref.req#reservationData.req#shipVerDt,
+      "renoRsnCd": ref.req#reservationData.req#renoRsnCd,
+      "renoQty": ref.req#reservationData.req#renoQty,
+      "renoDt": ref.req#reservationData.req#renoDt,
+      "splitTrainingCd": ref.req#reservationData.req#splitTrainingCd,
+      "split1Stat": ref.req#reservationData.req#split1Stat,
+      "paraNbr": ref.req#reservationData.req#paraNbr,
+      "lineNbr": ref.req#reservationData.req#lineNbr,
+      "enlPpn": ref.req#reservationData.req#enlPpn,
+      "termOfEnlMonths": ref.req#reservationData.req#termOfEnlMonths,
+      "termOfEnlWeeks": ref.req#reservationData.req#termOfEnlWeeks,
+      "reservDt": ref.req#reservationData.req#reservDt,
+      "enlistDt": ref.req#reservationData.req#enlistDt,
+      "shipDt": ref.req#reservationData.req#shipDt,
+      "cmdCd": ref.req#reservationData.req#cmdCd,
+      "tngsearchStartDt": ref.req#reservationData.req#tngsearchStartDt,
+      "tngsearchEndDt": ref.req#reservationData.req#tngsearchEndDt,
+      "uic": ref.req#reservationData.req#uic,
+      "unitPosId": ref.req#reservationData.req#unitPosId,
+      "jobOpeningId": ref.req#reservationData.req#jobOpeningId,
+      "firStaCd": ref.req#reservationData.req#firStaCd,
+      "uvCtlNbr": ref.req#reservationData.req#uvCtlNbr,
+      "uVArrivDt": ref.req#reservationData.req#uVArrivDt,
+      "vacMpc": ref.req#reservationData.req#vacMpc,
+      "vacPayLvl": ref.req#reservationData.req#vacPayLvl,
+      "projEtsDt": ref.req#reservationData.req#projEtsDt,
+      "dMosQualCd": ref.req#reservationData.req#dMosQualCd,
+      "paysJobCd": ref.req#reservationData.req#paysJobCd,
+      "usarNgUnitNm": ref.req#reservationData.req#usarNgUnitNm,
+      "choiceZip": ref.req#reservationData.req#choiceZip,
+      "sp1ReservShipDt": ref.req#reservationData.req#sp1ReservShipDt,
+      "sp1ReservShipVerDt": ref.req#reservationData.req#sp1ReservShipVerDt,
+      "shipArrivalDt": ref.req#reservationData.req#shipArrivalDt,
+      "depUnconfirmDt": ref.req#reservationData.req#depUnconfirmDt,
+      "enlistUnconfirmDt": ref.req#reservationData.req#enlistUnconfirmDt,
+      "shipUnconfirmDt": ref.req#reservationData.req#shipUnconfirmDt,
+      "enlMos9": ref.req#reservationData.req#enlMos9,
+      "depOvrRide": ref.req#reservationData.req#depOvrRide,
+      "ovrRide1Factor": ref.req#reservationData.req#ovrRide1Factor,
+      "ovrRide2Factor": ref.req#reservationData.req#ovrRide2Factor,
+      "ovrRide3Factor": ref.req#reservationData.req#ovrRide3Factor,
+      "ovrRide4Factor": ref.req#reservationData.req#ovrRide4Factor,
+      "ovrRide5Factor": ref.req#reservationData.req#ovrRide5Factor,
+      "ovrRide6Factor": ref.req#reservationData.req#ovrRide6Factor,
+      "ovrRideResrvRemrks": ref.req#reservationData.req#ovrRideResrvRemrks,
+      "accessOvrRideInd": ref.req#reservationData.req#accessOvrRideInd,
+      "termsOfSrvReq": ref.req#reservationData.req#termsOfSrvReq,
+      "incentQualOvrRide": ref.req#reservationData.req#incentQualOvrRide,
+      "aitRemarks": ref.req#reservationData.req#aitRemarks,
+      "basicTrDesired": ref.req#reservationData.req#basicTrDesired,
+      "basicTrCrs": ref.req#reservationData.req#basicTrCrs,
+      "batVol": ref.req#reservationData.req#batVol,
+      "eslWeeks": ref.req#reservationData.req#eslWeeks,
+      "mandatoryRetDt": ref.req#reservationData.req#mandatoryRetDt,
+      "outMonth": ref.req#reservationData.req#outMonth,
+      "enlistTrainProgCd": ref.req#reservationData.req#enlistTrainProgCd,
+      "priOptionCd": ref.req#reservationData.req#priOptionCd,
+      "actFirstTermMnths": ref.req#reservationData.req#actFirstTermMnths,
+      "actFirstTermWeeks": ref.req#reservationData.req#actFirstTermWeeks,
+      "totRCBonusAmt": ref.req#reservationData.req#totRCBonusAmt,
+      "milperMsgNmr": ref.req#reservationData.req#milperMsgNmr,
+      "milperMsgDt": ref.req#reservationData.req#milperMsgDt,
+      "bonusTotAmt": ref.req#reservationData.req#bonusTotAmt,
+      "userId": ref.req#reservationData.req#userId,
+      "createId": ref.req#reservationData.req#createId,
+      "createSrcCd": ref.req#reservationData.req#createSrcCd,
+      "lastUpdateDt": ref.req#reservationData.req#lastUpdateDt,
+      "lastUpdateId": ref.req#reservationData.req#lastUpdateId,
+      "lastUpdateSrcCd": ref.req#reservationData.req#lastUpdateSrcCd,
+      "gcSSN": ref.req#reservationData.req#gcSSN,
+      "transactDtTm": ref.req#reservationData.req#transactDtTm,
+      "reinstRsvInd": ref.req#reservationData.req#reinstRsvInd,
+      "enlTrainCatCd": ref.req#reservationData.req#enlTrainCatCd,
+      "resrvTypCd": ref.req#reservationData.req#resrvTypCd,
+      "reAssignTypCd": ref.req#reservationData.req#reAssignTypCd,
+      "acaspParticpTypCd": ref.req#reservationData.req#acaspParticpTypCd,
+      "tempResDt": ref.req#reservationData.req#tempResDt,
+      "permResDt": ref.req#reservationData.req#permResDt,
+      "isQualified": ref.req#reservationData.req#isQualified,
+      "reservQuals": ref.req#reservationData.req#reservQuals,
+      "recStaLoc": {
+        "locCd": ref.req#reservationData.req#recStaLoc.dat#locCd,
+        "date": ref.req#reservationData.req#recStaLoc.dat# date,
+        "uic": ref.req#reservationData.req#recStaLoc.dat#uic,
+      },
+      "uvMos": {
+        "enlJob": {
+          "mos": ref.req#reservationData.req#uvMos.dat#enlJob.dat#mos,
+          "skillLvl": ref.req#reservationData.req#uvMos.dat#enlJob.dat#skillLvl,
+          "sqi": ref.req#reservationData.req#uvMos.dat#enlJob.dat#sqi,
+          "asi": ref.req#reservationData.req#uvMos.dat#enlJob.dat#asi,
+          "langCd": ref.req#reservationData.req#uvMos.dat#enlJob.dat#langCd
+        },
+        "coJob": {
+          "aoc": ref.req#reservationData.req#uvMos.dat#coJob.dat#aoc,
+          "skill": ref.req#reservationData.req#uvMos.dat#coJob.dat#skill,
+          "langCd": ref.req#reservationData.req#uvMos.dat#coJob.dat#langCd
+        },
+        "woJob": {
+          "mos": ref.req#reservationData.req#uvMos.dat#woJob.dat#mos,
+          "sqi": ref.req#reservationData.req#uvMos.dat#woJob.dat#sqi,
+          "asi": ref.req#reservationData.req#uvMos.dat#woJob.dat#asi,
+          "langCd": ref.req#reservationData.req#uvMos.dat#woJob.dat#langCd
+        }
+      },
+      "unitAddr": {
+        "street1": ref.req#reservationData.req#unitAddr.dat#street1,
+        "street2": ref.req#reservationData.req#unitAddr.dat#street2,
+        "city": ref.req#reservationData.req#unitAddr.dat#city,
+        "countyCd": ref.req#reservationData.req#unitAddr.dat#countyCd,
+        "stateAbrv": ref.req#reservationData.req#unitAddr.dat#stateAbrv,
+        "zipCode": ref.req#reservationData.req#unitAddr.dat#zipCode,
+        "countryCd": ref.req#reservationData.req#unitAddr.dat#countryCd
+      },
+      "unitPhone": {
+        "countryCd": ref.req#reservationData.req#unitPhone.dat#countryCd,
+        "areaCd": ref.req#reservationData.req#unitPhone.dat#areaCd,
+        "phoneNbr": ref.req#reservationData.req#unitPhone.dat#phoneNbr,
+        "extension": ref.req#reservationData.req#unitPhone.dat#extension
+      },
+      "trainMos4": {
+        "mos": ref.req#reservationData.req#trainMos4.dat#mos,
+        "skillLvl": ref.req#reservationData.req#trainMos4.dat#skillLvl
+      },
+      "preReqMos": {
+        "mos": ref.req#reservationData.req#preReqMos.dat#mos,
+        "skillLvl": ref.req#reservationData.req#preReqMos.dat#skillLvl
+      },
+      "training": {
+        "tngCrsTypCd": ref.req#reservationData.req#training.dat#tngCrsTypCd,
+        "locCd": ref.req#reservationData.req#training.dat#locCd,
+        "date": ref.req#reservationData.req#training.dat#date,
+        "uic": ref.req#reservationData.req#training.dat#uic,
+        "course": ref.req#reservationData.req#training.dat#course,
+        "classNbr": ref.req#reservationData.req#training.dat#classNbr
+      },
+      "incentives": {
+        "raIncentCd": ref.req#reservationData.req#incentives.dat#raIncentCd,
+        "rcIncentCd": ref.req#reservationData.req#incentives.dat#rcIncentCd,
+        "IncentAmt": ref.req#reservationData.req#incentives.dat#IncentAmt
+      }
+    },
+    "applicantData": {
+      "indSsn": ref.req#applicantData.req#indSsn,
+      "indivName": {
+        "lastNm": ref.req#applicantData.dat#lastNm,
+        "firstNm": ref.req#applicantData.dat#firstNm,
+        "middleNm": ref.req#applicantData.dat#middleNm
+      },
+      "oldname": {
+        "lastNm": ref.req#applicantData.dat#lastNm,
+        "firstNm": ref.req#applicantData.dat#firstNm,
+        "middleNm": ref.req#applicantData.dat#middleNm
+      },
+      "indAddr": {
+        "street1": ref.req#applicantData.dat#street1,
+        "city": ref.req#applicantData.dat#city,
+        "countyCd": ref.req#applicantData.dat#countyCd,
+        "stateAbrv": ref.req#applicantData.dat#stateAbrv,
+        "zipCode": ref.req#applicantData.dat#zipCode,
+        "countryCd": ref.req#applicantData.dat#countryCd
+      },
+      "indEmail": ref.req#applicantData.req#indEmail,
+      "indPhoneNr": {
+        "countryCd": ref.req#applicantData.dat#countryCd,
+        "areaCd": ref.req#applicantData.dat#areaCd,
+        "phoneNbr": ref.req#applicantData.dat#phoneNbr
+      },
+      "citizenshipStat": ref.req#applicantData.req#citizenshipStat,
+      "citizenship": ref.req#applicantData.req#citizenship,
+      "birthCtryCd": ref.req#applicantData.req#birthCtryCd,
+      "indSexCd": ref.req#applicantData.req#indSexCd,
+      "indRacePopCd": ref.req#applicantData.req#indRacePopCd,
+      "indEthnicCd": ref.req#applicantData.req#indEthnicCd,
+      "indOpLic": ref.req#applicantData.req#indOpLic,
+      "indOpLicExpDt": ref.req#applicantData.req#indOpLicExpDt,
+      "birthDt": ref.req#applicantData.req#birthDt,
+      "nbrAdultDep": ref.req#applicantData.req#nbrAdultDep,
+      "nbrChildDep": ref.req#applicantData.req#nbrChildDep,
+      "rctgProgCd": ref.req#applicantData.req#rctgProgCd,
+      "svc": ref.req#applicantData.req#svc,
+      "statOblig": ref.req#applicantData.req#statOblig,
+      "enlistCatCd": ref.req#applicantData.req#enlistCatCd,
+      "heldSkills": {
+        "occSpcDesigCd": ref.req#applicantData.dat#occSpcDesigCd,
+        "job": {
+          "enlJob": {
+            "mos": ref.req#applicantData.req#heldSkills.dat#job.dat#enlJob.dat#mos,
+            "skillLvl": ref.req#applicantData.req#heldSkills.dat#job.dat#enlJob.dat#skillLvl,
+            "sqi": ref.req#applicantData.req#heldSkills.dat#job.dat#enlJob.dat#sqi,
+            "asi": ref.req#applicantData.req#heldSkills.dat#job.dat#enlJob.dat#asi,
+            "langCd": ref.req#applicantData.req#heldSkills.dat#job.dat#enlJob.dat#langCd
+          },
+          "coJob": {
+            "aoc": ref.req#applicantData.req#heldSkills.dat#job.dat#coJob.dat#aoc,
+            "skill": ref.req#applicantData.req#heldSkills.dat#job.dat#coJob.dat#skill,
+            "langCd": ref.req#applicantData.req#heldSkills.dat#job.dat#coJob.dat#langCd
+          },
+          "woJob": {
+            "mos": ref.req#applicantData.req#heldSkills.dat#job.dat#woJob.dat#mos,
+            "sqi": ref.req#applicantData.req#heldSkills.dat#job.dat#woJob.dat#sqi,
+            "asi": ref.req#applicantData.req#heldSkills.dat#job.dat#woJob.dat#asi,
+            "langCd": ref.req#applicantData.req#heldSkills.dat#job.dat#woJob.dat#langCd
+          }
+        }
+      },
+      "starrPartCd": ref.req#applicantData.req#starrPartCd,
+      "mpc": ref.req#applicantData.req#mpc,
+      "payLevel": ref.req#applicantData.req#payLevel,
+      "enlType": ref.req#applicantData.req#enlType,
+      "BasActSvcDt": ref.req#applicantData.req#BasActSvcDt,
+      "recruiterSSN": ref.req#applicantData.req#recruiterSSN,
+      "rsid": ref.req#applicantData.req#rsid,
+      "consObj": ref.req#applicantData.req#consObj,
+      "vol": ref.req#applicantData.req#vol,
+      "secClr": ref.req#applicantData.req#secClr,
+      "inducteeCd": ref.req#applicantData.req#inducteeCd,
+      "mepsId": ref.req#applicantData.req#mepsId,
+      "advRankRsn": ref.req#applicantData.req#advRankRsn,
+      "prspctRecInd": ref.req#applicantData.req#prspctRecInd,
+      "officeCd": ref.req#applicantData.req#officeCd,
+      "missionBoxCat": ref.req#applicantData.req#missionBoxCat,
+      "ttasScore": ref.req#applicantData.req#ttasScore,
+      "ttasPassInd": ref.req#applicantData.req#ttasPassInd,
+      "blueToGreenPart": ref.req#applicantData.req#blueToGreenPart,
+      "enlistConfirm": ref.req#applicantData.req#enlistConfirm,
+      "enlistConfirmReasons": ref.req#applicantData.req#enlistConfirmReasons,
+      "shipConfirm": ref.req#applicantData.req#shipConfirm,
+      "shipConfirmReasons": ref.req#applicantData.req#shipConfirmReasons,
+      "mepsCat": ref.req#applicantData.req#mepsCat,
+      "cp": ref.req#applicantData.req#cp,
+      "height": ref.req#applicantData.req#height,
+      "weight": ref.req#applicantData.req#weight,
+      "physicalExam": {
+        "examCd": ref.req#applicantData.dat#examCd,
+        "examDt": ref.req#applicantData.dat#examDt
+      },
+      "bmi": ref.req#applicantData.req#bmi,
+      "educYrs": ref.req#applicantData.req#educYrs,
+      "educCd": ref.req#applicantData.req#educCd,
+      "asvabResults": {
+        "testDt": ref.req#applicantData.req#asvabResults.dat#testDt,
+        "afqt": ref.req#applicantData.req#asvabResults.dat#afqt,
+        "gt": ref.req#applicantData.req#asvabResults.dat#gt,
+        "gm": ref.req#applicantData.req#asvabResults.dat#gm,
+        "el": ref.req#applicantData.req#asvabResults.dat#el,
+        "cl": ref.req#applicantData.req#asvabResults.dat#cl,
+        "mm": ref.req#applicantData.req#asvabResults.dat#mm,
+        "sc": ref.req#applicantData.req#asvabResults.dat#sc,
+        "co": ref.req#applicantData.req#asvabResults.dat#co,
+        "fa": ref.req#applicantData.req#asvabResults.dat#fa,
+        "of": ref.req#applicantData.req#asvabResults.dat#of,
+        "st": ref.req#applicantData.req#asvabResults.dat#st,
+        "gsRaw": ref.req#applicantData.req#asvabResults.dat#gsRaw,
+        "arRaw": ref.req#applicantData.req#asvabResults.dat#arRaw,
+        "wkRaw": ref.req#applicantData.req#asvabResults.dat#wkRaw,
+        "pcRaw": ref.req#applicantData.req#asvabResults.dat#aoRaw,
+        "aoRaw": ref.req#applicantData.req#asvabResults.dat#asRaw,
+        "asRaw": ref.req#applicantData.req#asvabResults.dat#asRaw,
+        "mkRaw": ref.req#applicantData.req#asvabResults.dat#mkRaw,
+        "mcRaw": ref.req#applicantData.req#asvabResults.dat#mcRaw,
+        "elRaw": ref.req#applicantData.req#asvabResults.dat#elRaw,
+        "veRaw": ref.req#applicantData.req#asvabResults.dat#veRaw
+      },
+      "mathAccredCd": ref.req#applicantData.req#mathAccredCd,
+      "sciAccredCd": ref.req#applicantData.req#sciAccredCd,
+      "apftDt": ref.req#applicantData.req#apftDt,
+      "apftPassInd": ref.req#applicantData.req#apftPassInd,
+      "typingCertInd": ref.req#applicantData.req#typingCertInd,
+      "typingWPM": ref.req#applicantData.req#bandScore,
+      "bandScore": ref.req#applicantData.req#bandScore,
+      "bandDate": ref.req#applicantData.req#bandDate,
+      "voiceScore": ref.req#applicantData.req#voiceScore,
+      "voiceDate": ref.req#applicantData.req#voiceDate,
+      "addtCollegeCredit": ref.req#applicantData.req#addtCollegeCredit,
+      "testResults": [
+        {
+          "testType": ref.req#applicantData.req#testResults.dat#testType,
+          "testDt": ref.req#applicantData.req#testResults.dat#testDt,
+          "score": ref.req#applicantData.req#testResults.dat#score
+        }
+      ],
+      "dlptTests" : {
+			"testDt" : ref.req#applicantData.req#dlptTests.dat#testDt,
+			"lang" : ref.req#applicantData.req#dlptTests.dat#lang,
+			"evalMethod" : ref.req#applicantData.req#dlptTests.dat#evalMethod,
+			"profLvl" : ref.req#applicantData.req#dlptTests.dat#profLvl,
+			"component" : ref.req#applicantData.req#dlptTests.dat#component,
+			"score" : ref.req#applicantData.req#dlptTests.dat#score
+		},
+		"priorService" : {
+			"commSrcCd" : ref.req#applicantData.req#priorService.dat#commSrcCd,
+			"daysOfSvc" : ref.req#applicantData.req#priorService.dat#daysOfSvc,
+			"lastActEtsDt" : ref.req#applicantData.req#priorService.dat#lastActEtsDt,
+			"totActSrv" : ref.req#applicantData.req#priorService.dat#totActSrv,
+			"priorServices" : {
+				"uniSvcCd" : ref.req#applicantData.req#priorService.dat#priorServices.dat#uniSvcCd,
+				"compCd" : ref.req#applicantData.req#priorService.dat#priorServices.dat#compCd,
+				"losingUIC" : ref.req#applicantData.req#priorService.dat#priorServices.dat#losingUIC,
+				"beginDt" : ref.req#applicantData.req#priorService.dat#priorServices.dat#beginDt,
+				"endDt" : ref.req#applicantData.req#priorService.dat#priorServices.dat#endDt,
+				"netActSrv" : ref.req#applicantData.req#priorService.dat#priorServices.dat#netActSrv,
+				"effDateOfGrade" : ref.req#applicantData.req#priorService.dat#priorServices.dat#effDateOfGrade,
+				"mpc" : ref.req#applicantData.req#priorService.dat#priorServices.dat#mpc,
+				"grade" : ref.req#applicantData.req#priorService.dat#priorServices.dat#grade,
+				"mos": {
+					"enlJob": {
+					  "mos": ref.req#reservationData.req#uvMos.dat#enlJob.dat#mos,
+					  "skillLvl": ref.req#reservationData.req#uvMos.dat#enlJob.dat#skillLvl,
+					  "sqi": ref.req#reservationData.req#uvMos.dat#enlJob.dat#sqi,
+					  "asi": ref.req#reservationData.req#uvMos.dat#enlJob.dat#asi,
+					  "langCd": ref.req#reservationData.req#uvMos.dat#enlJob.dat#langCd
+					},
+					"coJob": {
+					  "aoc": ref.req#reservationData.req#uvMos.dat#coJob.dat#aoc,
+					  "skill": ref.req#reservationData.req#uvMos.dat#coJob.dat#skill,
+					  "langCd": ref.req#reservationData.req#uvMos.dat#coJob.dat#langCd
+					},
+					"woJob": {
+					  "mos": ref.req#reservationData.req#uvMos.dat#woJob.dat#mos,
+					  "sqi": ref.req#reservationData.req#uvMos.dat#woJob.dat#sqi,
+					  "asi": ref.req#reservationData.req#uvMos.dat#woJob.dat#asi,
+					  "langCd": ref.req#reservationData.req#uvMos.dat#woJob.dat#langCd
+					}
+				}
+			}
+		},
+      "gcSSN": ref.req#applicantData.req#gcSSN,
+      "basicTrCmpt": ref.req#applicantData.req#basicTrCmpt
+    }  
+  }
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<flow-ref doc:name="Set Reservation Consume Flow" doc:id="8d2df592-a31f-45cf-aad9-3290b654530f" name="setReservationConsumeFlow"/>
+		<ee:transform doc:name="Transform XML Response to JSON" doc:id="bba89c50-6ee4-4c25-a3d3-d428069fface" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+ns req http://www.mepcom.army.mil/request
+---
+{
+	setDataResponse : payload.body.req#setDataResponse
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger Exit" doc:id="5e066da8-13bd-485e-960b-f21f433baa97" />
+	</flow>
+	<flow name="setReservationConsumeFlow" doc:id="4ba2b171-7750-4da5-8c88-7ccdffc04aca" >
+		<logger level="INFO" doc:name="Logger" doc:id="771c539c-9196-40f8-adea-bc6b8c61800d" />
+		<wsc:consume doc:name="Consume Set Reservation" doc:id="824a5be2-df62-4100-a3e7-fe9be52ed676" config-ref="Web_Service_Consumer_Config" operation="setReservation"/>
+		<logger level="INFO" doc:name="Logger" doc:id="3b2212fd-05e7-463c-9696-38207a1da657" />
+	</flow>
+</mule>

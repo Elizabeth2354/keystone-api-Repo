@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+type: object
+examples:
+  output: !include ../examples/indPhoneNrExample.raml
+properties:
+  countryCd: 
+    type: integer
+    required: false
+    maximum: 3
+  areaCd:
+    type: integer
+    required: false
+  phoneNbr: 
+     type: integer
+     required: false
+  extension: 
+     type: integer
+     required: false
+  

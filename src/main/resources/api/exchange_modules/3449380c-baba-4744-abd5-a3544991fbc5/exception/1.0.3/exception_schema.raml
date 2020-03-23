@@ -1,0 +1,41 @@
+#%RAML 1.0 DataType
+displayName:  Error Type
+description: The type to be used in all AIE interfaces to report an error condition
+type: object
+properties:
+  code:
+    displayName: Error Code
+    type: string
+    required: true
+  message:
+    displayName: Error Message
+    type: string
+    required: true
+  status:
+    displayName: Status
+    type: string
+    required: false
+  sender:
+    displayName: Sender
+    type: string
+    required: false
+  receiver:
+    displayName: Receiver
+    type: string
+    required: false
+  notificationReceipient:
+    displayName: Notification
+    type: string
+    required: false
+  epochTime:
+    displayName: Epoch Time
+    type: integer
+    required: true
+  details:
+    displayName: Details
+    type: array
+    required: false
+    items: !include exception_details.raml
+
+examples: 
+  request: !include exception_example.raml
